@@ -1,0 +1,29 @@
+# Disable the built-in NGINX LoadBalancer
+nginx:
+  service:
+    type: ClusterIP
+
+# Turn off the bundled PostgreSQL
+postgresql:
+  enabled: false
+
+# Connect to your GCP Cloud SQL Instance
+database:
+  type: postgresql
+  driver: org.postgresql.Driver
+  url: "jdbc:postgresql://10.115.22.3:5432/artifactory"
+  user: "artifactory"
+  password: "ArtifactorySandboxPass123!"
+
+# Resource tuning for the e2-standard-4 spot nodes
+artifactory:
+  javaOpts:
+    xms: "2g"
+    xmx: "4g"
+  resources:
+    requests:
+      memory: "4Gi"
+      cpu: "1"
+    limits:
+      memory: "6Gi"
+      cpu: "2"
