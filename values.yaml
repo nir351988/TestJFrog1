@@ -1,7 +1,7 @@
 # Disable the built-in NGINX LoadBalancer
 nginx:
   service:
-    type: ClusterIP
+    type: LoadBalancer
 
 # Turn off the bundled PostgreSQL
 postgresql:
